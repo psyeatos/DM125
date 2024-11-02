@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "846596069798",
+    "project_id": "dm125-56e24",
+    "storage_bucket": "dm125-56e24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846596069798:android:5c16a97c1ee1c616d79767",
+        "android_client_info": {
+          "package_name": "com.example.dm125"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6b5FY7aEsL4wRD-WhUdYCo9kBTUYTe-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
