@@ -17,6 +17,9 @@ interface TaskRepository {
     @GET("tasks")
     fun readAll(): Call<List<Task>>
 
+    @GET("tasks/{id}")
+    fun readById(@Path("id") id: Long): Call<Task>
+
     @PATCH("tasks/{id}")
     fun update(@Path("id") id: Long, @Body task: Task): Call<Task>
 

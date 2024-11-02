@@ -57,4 +57,6 @@ dependencies {
     implementation(libs.preference.ktx)
     implementation(libs.swipe.refresh.layout)
     implementation(libs.firebase.auth.ktx)
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
 }

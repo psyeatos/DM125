@@ -123,16 +123,29 @@ class MainActivity : AppCompatActivity() {
         binding.rvTask.adapter = tasksAdapter
         binding.rvTask.layoutManager = LinearLayoutManager(this)
 
-        ItemTouchHelper(TaskItemTouchCallback(object : TaskItemSwipeListener{
+        ItemTouchHelper(TaskItemTouchCallback(object : TaskItemSwipeListener {
             override fun onSwipe(position: Int) {
                 val task = tasksAdapter.getItem(position)
-                taskService.delete(task).observe(this@MainActivity) { responseDto ->
-                    if(responseDto.isError) {
-                        tasksAdapter.refreshItem(position)
-                    } else {
-                        tasksAdapter.deleteItem(position)
+
+                AlertDialog.Builder(this@MainActivity)
+                    .setTitle("Confirmar exclusão")
+                    .setMessage("Tem certeza de que deseja excluir esta tarefa?")
+                    .setPositiveButton("Sim") { _, _ ->
+                        taskService.delete(task).observe(this@MainActivity) { responseDto ->
+                            if (responseDto.isError) {
+                                tasksAdapter.refreshItem(position)
+                            } else {
+                                tasksAdapter.deleteItem(position)
+                            }
+                        }
                     }
-                }
+                    .setNegativeButton("Não") { _, _ ->
+                        tasksAdapter.refreshItem(position)
+                    }
+                    .setOnCancelListener {
+                        tasksAdapter.refreshItem(position)
+                    }
+                    .show()
             }
         })).attachToRecyclerView(binding.rvTask)
 
